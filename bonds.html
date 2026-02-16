@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bond Support Services - Apex Legal Assist</title>
+    <meta name="description"
+        content="Specialised bond and finance documentation support for conveyancers. Complete administrative and drafting support for bond matters.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1a3a52;
+            --navy-light: #2d5a7b;
+            --gold: #c9a961;
+            --gold-light: #e6d5b8;
+            --text-dark: #1a1a1a;
+            --text-light: #f5f5f5;
+            --accent-blue: #3d7ca8;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--text-light);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: var(--navy);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--navy);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: 'Lora', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            display: inline-block;
+        }
+
+        .logo-text {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        /* Hero Section with Key Visual */
+        .bonds-hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--text-light);
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bonds-hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 5%;
+            width: 300px;
+            height: 300px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><defs><linearGradient id="keyGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23c9a961;stop-opacity:0.3" /><stop offset="100%" style="stop-color:%23e6d5b8;stop-opacity:0.15" /></linearGradient></defs><g transform="translate(150,150)"><rect x="-40" y="-80" width="80" height="40" rx="5" fill="url(%23keyGradient)" stroke="%23c9a961" stroke-width="2"/><circle cx="0" cy="-80" r="25" fill="url(%23keyGradient)" stroke="%23c9a961" stroke-width="2"/><rect x="-6" y="-50" width="12" height="100" fill="%23c9a961" opacity="0.4"/><g transform="translate(-30, 50)"><rect width="60" height="8" fill="%23c9a961" opacity="0.3" rx="2"/><rect width="50" height="8" y="12" fill="%23c9a961" opacity="0.3" rx="2"/><rect width="55" height="8" y="24" fill="%23c9a961" opacity="0.3" rx="2"/></g></g></svg>') no-repeat center;
+            background-size: contain;
+            opacity: 0.8;
+            animation: keyFloat 6s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes keyFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+        }
+
+        .bonds-hero .container {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .bonds-hero h1 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .bonds-hero p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .key-tagline {
+            font-size: 1.3rem;
+            font-family: 'Lora', serif;
+            color: var(--gold-light);
+            margin-top: 2rem;
+            font-style: italic;
+        }
+
+        /* Page Content */
+        .page-content {
+            padding: 4rem 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 2rem 0;
+            align-items: start;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            background: #fafafa;
+            padding: 2rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--gold);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-item h4 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .feature-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-item li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.7rem;
+            position: relative;
+        }
+
+        .feature-item li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Key Features Highlight */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(61, 124, 168, 0.08) 0%, rgba(201, 169, 97, 0.1) 100%);
+            border-left: 5px solid var(--accent-blue);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box h4 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        /* Process Cards */
+        .process-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .process-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 4px;
+            border-top: 4px solid var(--navy);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .process-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .process-card h4 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .process-card p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Bond Types */
+        .bond-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .bond-type {
+            background: linear-gradient(135deg, #f9f9f9 0%, #fafafa 100%);
+            padding: 2rem;
+            border-radius: 4px;
+            border-right: 4px solid var(--gold);
+        }
+
+        .bond-type h4 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .bond-type p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(201, 169, 97, 0.3);
+        }
+
+        /* Stat Box */
+        .stat-section {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--text-light);
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .stat-section h3 {
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-section p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: var(--text-light);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--gold-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .bonds-hero::before {
+                display: none;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+
+            .process-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .bond-types {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="./" class="logo">
+                <img src="Logo.webp" alt="Apex logo" class="logo-img">
+                <span class="logo-text">Apex Legal Assist</span>
+            </a>
+            <ul>
+                <li><a href="./">Home</a></li>
+                <li><a href="./conveyancing.html">Conveyancing</a></li>
+                <li><a href="./deceased-estates.html">Deceased Estates</a></li>
+                <li><a href="./bonds.html">Bonds</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Bonds Hero Section -->
+    <section class="bonds-hero">
+        <div class="container">
+            <h1>Bond & Finance Support</h1>
+            <p>Specialised administrative and drafting support for bond matters and financing documentation. We unlock
+                the pathway to successful bond processing.</p>
+            <div class="key-tagline">
+                The key that opens the door to seamless financing
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Content -->
+    <section class="page-content">
+        <div class="container">
+
+            <!-- Understanding Bond Support -->
+            <div class="content-section">
+                <h2>Bonds: A Critical Part of Property Transfer</h2>
+                <p>Bond registrations are integral to property transactions. They involve complex coordination between
+                    attorneys, banks, the Deeds Office, and various financial institutions. The administrative load is
+                    significant—documentation, correspondence, compliance checks, and file management all demand
+                    attention to detail and timely execution.</p>
+                <p>Apex provides end-to-end administrative support for bond matters, ensuring nothing falls through the
+                    cracks while you maintain full professional control.</p>
+            </div>
+
+            <!-- Bond Support Services -->
+            <div class="content-section">
+                <h2>Our Bond Support Services</h2>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>Bond Documentation</h4>
+                        <ul>
+                            <li>Bond application drafting</li>
+                            <li>Bank correspondence</li>
+                            <li>Financial verification documents</li>
+                            <li>Mortgage deed preparation</li>
+                            <li>Amendment and variation documentation</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Bond Administration</h4>
+                        <ul>
+                            <li>File opening and tracking</li>
+                            <li>Document completeness checks</li>
+                            <li>Bank follow-ups</li>
+                            <li>Status reporting</li>
+                            <li>Timeline management</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Deeds Office Coordination</h4>
+                        <ul>
+                            <li>Bond lodgement preparation</li>
+                            <li>Document compilation</li>
+                            <li>Deeds Office correspondence</li>
+                            <li>Registration tracking</li>
+                            <li>Completion support</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Finance Support</h4>
+                        <ul>
+                            <li>Bond registration documentation</li>
+                            <li>Insurance and indemnity coordination</li>
+                            <li>Compliance verification</li>
+                            <li>Disbursement coordination</li>
+                            <li>Final documentation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bond Process Overview -->
+            <div class="content-section">
+                <h2>The Bond Processing Journey</h2>
+                <p>Understanding the bond process helps manage client expectations and timelines. Here's how we support
+                    each stage:</p>
+
+                <div class="process-cards">
+                    <div class="process-card">
+                        <div class="process-card-icon">🔍</div>
+                        <h4>Application & Assessment</h4>
+                        <p>Initial bond application drafting, bank requirement gathering, and financial documentation
+                            compilation.</p>
+                    </div>
+                    <div class="process-card">
+                        <div class="process-card-icon">📋</div>
+                        <h4>Documentation</h4>
+                        <p>Mortgage deed preparation, insurance coordination, and compliance documentation assembly.</p>
+                    </div>
+                    <div class="process-card">
+                        <div class="process-card-icon">✓</div>
+                        <h4>Approval & Coordination</h4>
+                        <p>Bank approval tracking, final documentation, and disbursement readiness.</p>
+                    </div>
+                    <div class="process-card">
+                        <div class="process-card-icon">📜</div>
+                        <h4>Deeds Registration</h4>
+                        <p>Lodgement preparation, registration management, and completion documentation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Types of Bonds We Support -->
+            <div class="content-section">
+                <h2>Types of Bonds We Support</h2>
+                <p>We provide expertise across the spectrum of bond types:</p>
+
+                <div class="bond-types">
+                    <div class="bond-type">
+                        <h4>Residential Bonds</h4>
+                        <p>Home purchase financing, bond refinancing, and residential property security documentation.
+                        </p>
+                    </div>
+                    <div class="bond-type">
+                        <h4>Commercial Bonds</h4>
+                        <p>Commercial property financing, business mortgages, and commercial security arrangements.</p>
+                    </div>
+                    <div class="bond-type">
+                        <h4>Bond Refinancing</h4>
+                        <p>Refinance documentation, debt consolidation bonds, and bond transfer matters.</p>
+                    </div>
+                    <div class="bond-type">
+                        <h4>Special Circumstances</h4>
+                        <p>Sectional title bonds, bond amendments, variations, and other specialised financing
+                            arrangements.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Apex for Bonds -->
+            <div class="highlight-box">
+                <h4>Why Practices Choose Apex for Bond Support</h4>
+                <p style="margin-bottom: 1rem;">Bond matters require meticulous attention to detail and reliable
+                    coordination across multiple parties. We excel in this space.</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+                    <div>
+                        <p style="color: var(--navy); font-weight: 600; margin-bottom: 0;"><span
+                                style="color: var(--gold); font-weight: bold; margin-right: 0.5rem;">✓</span> Expert
+                            coordination with banks</p>
+                    </div>
+                    <div>
+                        <p style="color: var(--navy); font-weight: 600; margin-bottom: 0;"><span
+                                style="color: var(--gold); font-weight: bold; margin-right: 0.5rem;">✓</span> Deeds
+                            Office process mastery</p>
+                    </div>
+                    <div>
+                        <p style="color: var(--navy); font-weight: 600; margin-bottom: 0;"><span
+                                style="color: var(--gold); font-weight: bold; margin-right: 0.5rem;">✓</span> Compliance
+                            and regulatory expertise</p>
+                    </div>
+                    <div>
+                        <p style="color: var(--navy); font-weight: 600; margin-bottom: 0;"><span
+                                style="color: var(--gold); font-weight: bold; margin-right: 0.5rem;">✓</span> Timeline
+                            management excellence</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Integration with Transfers -->
+            <div class="stat-section">
+                <h3>Bonds & Transfer Integration</h3>
+                <p>Many of our bond support clients also use us for transfer administration. This integrated approach
+                    ensures seamless coordination between bond registration and property transfer completion, reducing
+                    delays and client frustration.</p>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="content-section"
+                style="text-align: center; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: var(--text-light); padding: 3rem; border-radius: 4px; margin-top: 4rem;">
+                <h2 style="color: var(--gold); border-bottom: none; margin-bottom: 1rem;">Ready to Unlock Efficient Bond
+                    Processing?</h2>
+                <p style="color: var(--text-light); margin-bottom: 2rem;">Let's discuss how Apex can streamline your
+                    bond administration.</p>
+                <a href="mailto:admin@apexlegalassist.co.za" class="cta-button">Get in Touch</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Apex Legal Admin Solutions SA (Pty) Ltd. All rights reserved.</p>
+            <p>Gauteng & Western Cape | <a href="mailto:admin@apexlegalassist.co.za">admin@apexlegalassist.co.za</a></p>
+        </div>
+    </footer>
+</body>
+
+</html>

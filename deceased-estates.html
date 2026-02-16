@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deceased Estate Administration - Apex Legal Assist</title>
+    <meta name="description" content="Compassionate deceased estate administration support. We handle the administrative burden so you can focus on what matters.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1a3a52;
+            --navy-light: #2d5a7b;
+            --gold: #c9a961;
+            --gold-light: #e6d5b8;
+            --text-dark: #1a1a1a;
+            --text-light: #f5f5f5;
+            --warm-brown: #8b6f47;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--text-light);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: var(--navy);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--navy);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: 'Lora', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            display: inline-block;
+        }
+        .logo-text {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        /* Hero Section - Compassionate Design */
+        .compassion-hero {
+            background: linear-gradient(135deg, #8b6f47 0%, #5a4a36 100%);
+            color: var(--text-light);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .compassion-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+            opacity: 0.08;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .compassion-hero .container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .compassion-hero h1 {
+            color: var(--text-light);
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .core-message {
+            font-size: 1.8rem;
+            font-family: 'Lora', serif;
+            color: var(--gold-light);
+            margin: 2rem 0;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .compassion-hero p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Supporting Statement */
+        .supporting-statement {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 4px;
+            margin-top: 2rem;
+            border-left: 4px solid var(--gold);
+        }
+
+        .supporting-statement p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            font-style: italic;
+        }
+
+        /* Page Content */
+        .page-content {
+            padding: 4rem 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 2rem 0;
+            align-items: start;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            background: #fafafa;
+            padding: 2rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--gold);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+        }
+
+        .feature-item h4 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .feature-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-item li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.7rem;
+            position: relative;
+        }
+
+        .feature-item li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Compassion Box */
+        .compassion-box {
+            background: linear-gradient(135deg, rgba(139, 111, 71, 0.1) 0%, rgba(201, 169, 97, 0.08) 100%);
+            border-left: 5px solid var(--warm-brown);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .compassion-box h3 {
+            color: var(--warm-brown);
+            margin-bottom: 1rem;
+        }
+
+        .compassion-box p {
+            color: #444;
+        }
+
+        /* Service Models */
+        .service-models {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .model-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 4px;
+            border-top: 4px solid var(--navy);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .model-card h4 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .model-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .model-card li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .model-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Process Timeline */
+        .process-steps {
+            margin: 3rem 0;
+        }
+
+        .step {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .step-number {
+            background: var(--navy);
+            color: var(--text-light);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            margin-bottom: 0;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(201, 169, 97, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: var(--text-light);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--gold-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .core-message {
+                font-size: 1.4rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+
+            .service-models {
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="./" class="logo">
+                <img src="Logo.webp" alt="Apex logo" class="logo-img">
+                <span class="logo-text">Apex Legal Assist</span>
+            </a>
+            <ul>
+                <li><a href="./">Home</a></li>
+                <li><a href="./conveyancing.html">Conveyancing</a></li>
+                <li><a href="./deceased-estates.html">Deceased Estates</a></li>
+                <li><a href="./bonds.html">Bonds</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Compassionate Hero Section -->
+    <section class="compassion-hero">
+        <div class="container">
+            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 1rem;">Deceased Estate Administration</p>
+            <div class="core-message">
+                Losing a loved one is difficult enough.<br>
+                Finalising their affairs shouldn't be.
+            </div>
+            <div class="supporting-statement">
+                <p>We provide steady support to help you manage the estate process, so you can focus on what truly matters.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Content -->
+    <section class="page-content">
+        <div class="container">
+
+            <!-- Understanding the Journey -->
+            <div class="content-section">
+                <h2>The Weight of Administrative Burden</h2>
+                <p>When someone passes away, families and executors face not only emotional challenges, but a complex web of administrative tasks. From managing assets to notifying government agencies, settling debts to distributing estates—the process is time-consuming, detail-intensive, and overwhelming.</p>
+                <p>That's where Apex comes in. We handle the administrative winding-up, allowing you to focus on grieving, supporting your family, and remembering what truly matters.</p>
+            </div>
+
+            <!-- How We Work -->
+            <div class="content-section">
+                <h2>How We Support You</h2>
+                <p>Apex provides deceased estate administration support in two ways:</p>
+                
+                <div class="service-models">
+                    <div class="model-card">
+                        <h4>Working with Attorneys</h4>
+                        <p style="margin-bottom: 1rem;">For practitioners managing estate matters, we provide dedicated administrative support:</p>
+                        <ul>
+                            <li>Document preparation and filing</li>
+                            <li>Estate correspondence drafting</li>
+                            <li>Asset and liability tracking</li>
+                            <li>Distribution calculations</li>
+                            <li>Beneficiary communication support</li>
+                        </ul>
+                    </div>
+                    <div class="model-card">
+                        <h4>Direct Public Support</h4>
+                        <p style="margin-bottom: 1rem;">For executors and families requiring assistance with winding-up processes:</p>
+                        <ul>
+                            <li>Estate administration guidance</li>
+                            <li>Document organisation</li>
+                            <li>Administrative coordination</li>
+                            <li>Timeline management</li>
+                            <li>Process support and advice</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estate Administration Services -->
+            <div class="content-section">
+                <h2>Estate Administration Services</h2>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>Asset & Liability Management</h4>
+                        <ul>
+                            <li>Identification of all estate assets</li>
+                            <li>Property and account documentation</li>
+                            <li>Debt and liability tracking</li>
+                            <li>Valuation coordination</li>
+                            <li>Financial statement preparation</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Estate Administration</h4>
+                        <ul>
+                            <li>Probate and letters of authority</li>
+                            <li>Master's office correspondence</li>
+                            <li>Government agency notification</li>
+                            <li>Tax documentation coordination</li>
+                            <li>Compliance filing</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Distribution & Closure</h4>
+                        <ul>
+                            <li>Beneficiary communication</li>
+                            <li>Distribution calculation</li>
+                            <li>Asset transfer coordination</li>
+                            <li>Final accounting</li>
+                            <li>Estate closure support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Process -->
+            <div class="content-section">
+                <h2>The Estate Administration Process</h2>
+                <p>We break down the complex estate process into manageable steps, managing each with care and expertise.</p>
+                
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Initial Assessment</h4>
+                            <p>We understand the estate's scope, identify all assets, liabilities, and stakeholders, and develop an administration timeline.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Documentation & Filing</h4>
+                            <p>We compile necessary documents, prepare required filings with the Master's Office, and notify relevant government agencies and creditors.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Asset Management</h4>
+                            <p>We coordinate asset valuation, manage property matters, settle debts and taxes, and prepare for distribution.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Distribution & Closure</h4>
+                            <p>We calculate distributions, coordinate final transfers, communicate with beneficiaries, and prepare final accounting and estate closure.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Choose Apex for Estates -->
+            <div class="compassion-box">
+                <h3>Why Families Choose Apex for Estate Support</h3>
+                <p><strong>Compassion meets expertise.</strong> We understand that estate administration happens during life's most difficult moments. Our approach combines professional expertise with genuine care for your family's wellbeing.</p>
+                <ul style="list-style: none; padding-left: 0; margin-top: 1rem;">
+                    <li style="padding-left: 2rem; margin-bottom: 0.8rem; position: relative;"><span style="position: absolute; left: 0; color: var(--warm-brown); font-weight: bold;">✓</span> <strong>Peace of mind:</strong> Experienced administrators handle the complexity while you focus on family.</li>
+                    <li style="padding-left: 2rem; margin-bottom: 0.8rem; position: relative;"><span style="position: absolute; left: 0; color: var(--warm-brown); font-weight: bold;">✓</span> <strong>Clear timelines:</strong> We provide realistic expectations and keep you informed at every step.</li>
+                    <li style="padding-left: 2rem; margin-bottom: 0.8rem; position: relative;"><span style="position: absolute; left: 0; color: var(--warm-brown); font-weight: bold;">✓</span> <strong>Cost certainty:</strong> Transparent, pay-for-what-you-use model—no hidden fees or surprises.</li>
+                    <li style="padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: var(--warm-brown); font-weight: bold;">✓</span> <strong>Professional oversight:</strong> All work is managed with legal compliance and professional care.</li>
+                </ul>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="content-section" style="text-align: center; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: var(--text-light); padding: 3rem; border-radius: 4px; margin-top: 4rem;">
+                <h2 style="color: var(--gold); border-bottom: none; margin-bottom: 1rem;">Let Us Help Carry the Load</h2>
+                <p style="color: var(--text-light); margin-bottom: 2rem;">If you're navigating an estate, reach out. We're here to help.</p>
+                <a href="mailto:admin@apexlegalassist.co.za" class="cta-button">Get in Touch</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Apex Legal Admin Solutions SA (Pty) Ltd. All rights reserved.</p>
+            <p>Gauteng & Western Cape | <a href="mailto:admin@apexlegalassist.co.za">admin@apexlegalassist.co.za</a></p>
+        </div>
+    </footer>
+</body>
+</html>

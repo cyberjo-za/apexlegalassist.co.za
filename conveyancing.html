@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conveyancing Support - Apex Legal Assist</title>
+    <meta name="description" content="Comprehensive conveyancing and transfer support for attorneys. Drafting, file administration, and operational support.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1a3a52;
+            --navy-light: #2d5a7b;
+            --gold: #c9a961;
+            --gold-light: #e6d5b8;
+            --text-dark: #1a1a1a;
+            --text-light: #f5f5f5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--text-light);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: var(--navy);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            color: var(--navy);
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--navy);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: 'Lora', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            display: inline-block;
+        }
+        .logo-text {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--text-light);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .page-hero p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Page Content */
+        .page-content {
+            padding: 4rem 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 2rem 0;
+            align-items: start;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            background: #fafafa;
+            padding: 2rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .feature-item h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-item li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .feature-item li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(201, 169, 97, 0.1) 0%, rgba(26, 58, 82, 0.05) 100%);
+            border-left: 5px solid var(--gold);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box h4 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(201, 169, 97, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: var(--text-light);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--gold-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="./" class="logo">
+                <img src="Logo.webp" alt="Apex logo" class="logo-img">
+                <span class="logo-text">Apex Legal Assist</span>
+            </a>
+            <ul>
+                <li><a href="./">Home</a></li>
+                <li><a href="./conveyancing.html">Conveyancing</a></li>
+                <li><a href="./deceased-estates.html">Deceased Estates</a></li>
+                <li><a href="./bonds.html">Bonds</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Conveyancing & Transfer Support</h1>
+            <p>Complete administrative and drafting support for property transfers. We handle the complexity, you maintain control.</p>
+        </div>
+    </section>
+
+    <!-- Page Content -->
+    <section class="page-content">
+        <div class="container">
+
+            <!-- Drafting & Administrative Preparation -->
+            <div class="content-section">
+                <h2>Drafting & Administrative Preparation</h2>
+                <p>We prepare all documentation your conveyancing practice needs, submitted as drafts for your review and approval. Every piece of correspondence is issued under your authority.</p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>Conveyancing Correspondence</h4>
+                        <ul>
+                            <li>Letters to other attorneys</li>
+                            <li>Requests for guarantees</li>
+                            <li>Rates clearance correspondence</li>
+                            <li>Deeds Office queries</li>
+                            <li>Follow-ups and progress updates</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Document Format</h4>
+                        <ul>
+                            <li>Word or PDF drafts</li>
+                            <li>Marked "Draft – for Signature"</li>
+                            <li>Ready for your review</li>
+                            <li>Full attorney oversight</li>
+                            <li>Compliance assured</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transfer File Administration -->
+            <div class="content-section">
+                <h2>Transfer File Administration</h2>
+                <p>Professional management of the entire transfer file lifecycle, from opening through completion.</p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>File Setup & Tracking</h4>
+                        <ul>
+                            <li>File opening and transfer checklists</li>
+                            <li>Document completeness verification</li>
+                            <li>Status reporting</li>
+                            <li>Diary management</li>
+                            <li>Progress tracking systems</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Stakeholder Follow-ups</h4>
+                        <ul>
+                            <li>Municipality liaison</li>
+                            <li>Attorney coordination</li>
+                            <li>Bank follow-ups</li>
+                            <li>Estate agent communication</li>
+                            <li>Proactive progress chasing</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Deeds Office Support</h4>
+                        <ul>
+                            <li>Rates clearance figures</li>
+                            <li>Certificate management</li>
+                            <li>Deeds Office preparation</li>
+                            <li>Document compilation</li>
+                            <li>Submission coordination</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Operational & Compliance Support -->
+            <div class="content-section">
+                <h2>Operational & Compliance Support</h2>
+                <p>Beyond individual files, we help optimise your practice operations and ensure regulatory compliance.</p>
+                
+                <div class="two-column">
+                    <div>
+                        <h3>Workflow Optimisation</h3>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li style="padding-left: 2rem; margin-bottom: 1rem; position: relative;"><span style="position: absolute; left: 0; color: var(--gold);">✓</span> Conveyancing workflow setup</li>
+                            <li style="padding-left: 2rem; margin-bottom: 1rem; position: relative;"><span style="position: absolute; left: 0; color: var(--gold);">✓</span> File tracking systems</li>
+                            <li style="padding-left: 2rem; margin-bottom: 1rem; position: relative;"><span style="position: absolute; left: 0; color: var(--gold);">✓</span> Standard Operating Procedure development</li>
+                            <li style="padding-left: 2rem; margin-bottom: 1rem; position: relative;"><span style="position: absolute; left: 0; color: var(--gold);">✓</span> Administrative delegation structures</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Compliance & Risk</h3>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li style="padding-left: 2rem; margin-bottom: 1rem; position: relative;"><span style="position: absolute; left: 0; color: var(--gold);">✓</span> FICA document collection & chasing</li>
+                            <li style="padding-left: 2rem; margin-bottom: 1rem; position: relative;"><span style="position: absolute; left: 0; color: var(--gold);">✓</span> File compliance audits</li>
+                            <li style="padding-left: 2rem; margin-bottom: 1rem; position: relative;"><span style="position: absolute; left: 0; color: var(--gold);">✓</span> POPIA administrative preparation</li>
+                            <li style="padding-left: 2rem; margin-bottom: 1rem; position: relative;"><span style="position: absolute; left: 0; color: var(--gold);">✓</span> Regulatory alignment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sectional Title Support -->
+            <div class="content-section">
+                <h2>Sectional Title Support</h2>
+                <p>Specialised administrative support for sectional title transfers and property management matters.</p>
+                
+                <div class="highlight-box">
+                    <h4>Sectional Title Services Include</h4>
+                    <p style="margin-bottom: 0.5rem;">Body corporate documentation • Conduct rules • Levy clearance certificates</p>
+                </div>
+            </div>
+
+            <!-- What We Don't Do -->
+            <div class="content-section" style="background: #f9f9f9; padding: 2rem; border-radius: 4px; border-left: 4px solid var(--navy);">
+                <h2 style="border-bottom: 3px solid var(--navy); margin-top: 0;">Professional Integrity: What We Don't Do</h2>
+                <p>To maintain compliance and professional standards, Apex operates with clear boundaries:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                    <div>
+                        <p style="color: var(--navy); font-weight: 600; margin-bottom: 0.5rem;">✗ We do not issue correspondence on attorney letterheads</p>
+                    </div>
+                    <div>
+                        <p style="color: var(--navy); font-weight: 600; margin-bottom: 0.5rem;">✗ We do not sign documents on behalf of attorneys</p>
+                    </div>
+                    <div>
+                        <p style="color: var(--navy); font-weight: 600; margin-bottom: 0.5rem;">✗ We do not give legal opinions</p>
+                    </div>
+                    <div>
+                        <p style="color: var(--navy); font-weight: 600; margin-bottom: 0.5rem;">✗ We do not communicate as "the attorney"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="content-section" style="text-align: center; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: var(--text-light); padding: 3rem; border-radius: 4px; margin-top: 4rem;">
+                <h2 style="color: var(--gold); border-bottom: none; margin-bottom: 1rem;">Ready to Scale Your Practice?</h2>
+                <p style="color: var(--text-light); margin-bottom: 2rem;">Let's discuss how Apex can reduce your administrative burden.</p>
+                <a href="mailto:admin@apexlegalassist.co.za" class="cta-button">Get in Touch</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Apex Legal Admin Solutions SA (Pty) Ltd. All rights reserved.</p>
+            <p>Gauteng & Western Cape | <a href="mailto:admin@apexlegalassist.co.za">admin@apexlegalassist.co.za</a></p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Legal Assist - Administrative Support for Conveyancers & Notaries</title>
+    <meta name="description"
+        content="Apex Legal Assist provides specialised outsourced administrative and drafting support to conveyancers and notaries in Gauteng and Western Cape.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1a3a52;
+            --navy-light: #2d5a7b;
+            --gold: #c9a961;
+            --gold-light: #e6d5b8;
+            --text-dark: #1a1a1a;
+            --text-light: #f5f5f5;
+            --border-light: #e0e0e0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--text-light);
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3 {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--navy);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--navy);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: 'Lora', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            display: inline-block;
+        }
+        .logo-text {
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--text-light);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .cta-button:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(201, 169, 97, 0.3);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            margin-left: 1rem;
+        }
+
+        .cta-secondary:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        /* Services Overview */
+        .services-overview {
+            padding: 5rem 2rem;
+            background: #fafafa;
+        }
+
+        .services-overview h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--gold);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Why Choose Apex */
+        .why-apex {
+            padding: 5rem 2rem;
+        }
+
+        .why-apex .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .why-apex h2 {
+            margin-bottom: 2rem;
+        }
+
+        .why-apex ul {
+            list-style: none;
+        }
+
+        .why-apex li {
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .why-apex li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        /* Service Pages */
+        .page-hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--text-light);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .page-hero p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .page-content {
+            padding: 4rem 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            background: #fafafa;
+            padding: 2rem;
+            border-radius: 4px;
+            border-top: 3px solid var(--gold);
+        }
+
+        .feature-item h4 {
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            font-family: 'Lora', serif;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: var(--text-light);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--gold-light);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .why-apex .container {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-secondary {
+                margin-left: 0;
+                margin-top: 1rem;
+                display: block;
+            }
+        }
+
+        /* Hero visual accent */
+        .hero-accent {
+            display: inline-block;
+            color: var(--gold);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="./" class="logo">
+                <img src="Logo.webp" alt="Apex logo" class="logo-img">
+                <span class="logo-text">Apex Legal Assist</span>
+            </a>
+            <ul>
+                <li><a href="./">Home</a></li>
+                <li><a href="./conveyancing.html">Conveyancing</a></li>
+                <li><a href="./deceased-estates.html">Deceased Estates</a></li>
+                <li><a href="./bonds.html">Bonds</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Legal Excellence,<br><span class="hero-accent">Without the Overhead</span></h1>
+            <p>Specialised outsourced administrative and drafting support for conveyancers and notaries. Scale your
+                capacity without permanent staff.</p>
+            <a href="./conveyancing.html" class="cta-button">Explore Our Services</a>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="services-overview">
+        <div class="container">
+            <h2>What We Offer</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Conveyancing Support</h3>
+                    <p>Comprehensive drafting and administrative support for property transfers. From correspondence to
+                        file administration, we handle the detail.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Deceased Estate Administration</h3>
+                    <p>Compassionate, professional support in winding up deceased estates. We relieve administrative
+                        burden during difficult times.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Bonds & Finance</h3>
+                    <p>Specialised support for bond matters and financial documentation. Expert handling of complex
+                        financing processes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Apex -->
+    <section class="why-apex">
+        <div class="container">
+            <div>
+                <h2>Why Practitioners Choose Apex</h2>
+                <ul>
+                    <li>Scale capacity without permanent staff costs</li>
+                    <li>No salaries, leave, or HR administration</li>
+                    <li>Pay-per-file flexibility with no long-term commitment</li>
+                    <li>Work under your authority—we support, don't practice</li>
+                    <li>Compliance-focused and professional integrity assured</li>
+                    <li>Support in Gauteng and Western Cape</li>
+                    <li>Proven expertise with high-volume workloads</li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="margin-top: 0;">Perfect For</h3>
+                <p>Small to mid-sized conveyancing firms with 1–3 conveyancers managing high-volume transfer workloads
+                    in complex municipal environments.</p>
+                <p
+                    style="margin-top: 2rem; font-style: italic; color: var(--navy); border-left: 3px solid var(--gold); padding-left: 1.5rem;">
+                    "We do what you do best—help you maintain professional control while we handle the administrative
+                    pressure."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background: #fafafa; padding: 4rem 2rem;">
+        <div class="container">
+            <h2 style="text-align: center;">Ready to Scale Your Practice?</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">Let's discuss how Apex can support
+                your firm.</p>
+            <div style="text-align: center;">
+                <a href="mailto:admin@apexlegalassist.co.za" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Apex Legal Admin Solutions SA (Pty) Ltd. All rights reserved.</p>
+            <p>Gauteng & Western Cape | <a href="mailto:admin@apexlegalassist.co.za">admin@apexlegalassist.co.za</a></p>
+        </div>
+    </footer>
+</body>
+
+</html>
